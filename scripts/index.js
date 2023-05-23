@@ -22,14 +22,16 @@ searchBtnEl.addEventListener('click', () => {
 
     const selectedLocation = locationSelectorEl.value;
 
-    const selectedParkByLocation = nationalParksArray.filter((nationalPark) => nationalPark.State === selectedLocation)
+    const selectedParkType = parkTypeSelectorEl.value;
 
-    selectedParkByLocation.forEach((selPark) => {
+    const nationalParkLocation = nationalParksArray.filter((nationalPark) => nationalPark.State === selectedLocation)
 
-        if (selPark.Zip == 'undefined') {
-            selPark.ZipCode
-        } if (selPark.Phone == 0) {
-            "No listed phone number"
+    const nationalParkType = nationalParksArray.filter((nationalPark) => nationalPark.LocationName.includes(selectedParkType));
+    
+    nationalParkLocation.forEach((selPark) => {
+
+        if (selPark.Phone == 0) {
+            selPark.Phone == "No listed phone number"
         }
         
         const card = document.createElement('div');
@@ -45,7 +47,35 @@ searchBtnEl.addEventListener('click', () => {
 
         <div class="card-body py-2">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <p>Address: ${selPark.Address}, ${selPark.City}, ${selPark.State}, ${selPark.Zip}</p>
+        <p>Address: ${selPark.Address}, ${selPark.City}, ${selPark.State}, ${selPark.ZipCode}</p>
+        <p>Phone number: ${selPark.Phone}</p>
+        <button class="btn btn-link">Read more</button>
+        </div>
+
+        `;
+        informationSectionEl.innerHTML += content;
+    })
+
+    nationalParkType.forEach((selPark) => {
+
+        if (selPark.Phone == 0) {
+            selPark.Phone == "No listed phone number"
+        }
+        
+        const card = document.createElement('div');
+        card.classList.add('card-body');
+
+        const content = `
+        <div class="card mt-4">
+            <div class="card-header">
+            <h5 class="mb-0">
+            ${selPark.LocationName}
+            </h5>
+        </div>
+
+        <div class="card-body py-2">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p>Address: ${selPark.Address}, ${selPark.City}, ${selPark.State}, ${selPark.ZipCode}</p>
         <p>Phone number: ${selPark.Phone}</p>
         <button class="btn btn-link">Read more</button>
         </div>
