@@ -34,6 +34,14 @@
         <h1>National Parks</h1>
         <hr>
         <h3 class="lead">Choose a search type:</h3>
+        <div id="searchByLocation" class="form-check">
+            <input type="radio" name="searchType" id="searchLocation" value="location" class="form-check-input" checked>
+            <label for="searchLocation" class="form-check-label">Search by location</label>
+        </div>
+        <div id="searchByParkType" class="form-check">
+            <input type="radio" name="searchType" id="searchParkType" value="parkType" class="form-check-input">
+            <label for="searchParkType" class="form-check-label">Search by park type</label>
+        </div>
     </div>
 
     <div class="container mt-4">
@@ -97,6 +105,6 @@
     <script src="./scripts/locationData.js"></script>
     <script src="./scripts/mountainData.js"></script>
     <script src="./scripts/parkTypeData.js"></script>
-    <script src="./scripts/index.js"></script>
+    <script src="./scripts/national-parks.js"></script>
   </body>
 </html>

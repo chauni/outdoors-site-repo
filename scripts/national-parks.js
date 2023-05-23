@@ -5,6 +5,17 @@ const parkTypeSelectorEl = document.getElementById('parkTypeSelector');
 const informationSectionEl = document.getElementById('informationSection');
 const searchBtnEl = document.getElementById('searchBtn');
 const clearBtnEl = document.getElementById('clearBtn');
+const searchByLocationRadio = document.getElementById('searchByLocation');
+const searchByParkTypeRadio = document.getElementById('searchByParkType');
+
+
+// searchByLocationRadio.addEventListener('change', () => {
+//     if (searchByLocationRadio.checked) {
+//         parkTypeSelectorEl.style.display = "none";
+//     } else {
+//         parkTypeSelectorEl.style.display = "block";
+//     }
+// })
 
 
 locationsArray.forEach((state) => {
@@ -56,11 +67,9 @@ searchBtnEl.addEventListener('click', () => {
         informationSectionEl.innerHTML += content;
     })
 
-    nationalParkType.forEach((selPark) => {
+    // how to get search result to clear in between choosing from the different search types
 
-        if (selPark.Phone == 0) {
-            selPark.Phone == "No listed phone number"
-        }
+    nationalParkType.forEach((selPark) => {
         
         const card = document.createElement('div');
         card.classList.add('card-body');
