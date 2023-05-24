@@ -12,7 +12,7 @@ mountainsArray.forEach((mountain) => {
 mountainSelectorEl.addEventListener('change', () => {
     mountainInfoDiv.innerHTML = '';
     mountainImagesDiv.innerHTML = '';
-    
+
     const selectedMountain = mountainSelectorEl.value;
 
     const displayMountainInfo = mountainsArray.filter((mountain) => mountain.name === selectedMountain);
@@ -25,7 +25,7 @@ mountainSelectorEl.addEventListener('change', () => {
         <div class="card mt-4">
             <div class="card-header">
             <h5 class="mb-0">
-            ${mountain.name} | Effort: ${mountain.effort}
+            ${mountain.name} <span class="lead fs-6">[ Effort: ${mountain.effort} ]</span>
             </h5>
         </div>
 
@@ -40,8 +40,8 @@ mountainSelectorEl.addEventListener('change', () => {
         const imgEl = document.createElement('img');
         imgEl.src = `./images/${mountain.img}`;
         imgEl.alt = mountain.name;
-        
+        imgEl.style.borderRadius = '15px';
+
         mountainImagesDiv.appendChild(imgEl);
-    })
-    console.log(displayMountainInfo)
+    });
 })
