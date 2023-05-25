@@ -1,3 +1,13 @@
-.is-hidden {
-    display: none;
+.centered-text {
+    position: absolute;
+    top: 33%;
+    left: 50%;
+    transform: translate(-40%, -40%);
+    font-size: 60px;
+    color: white;
+    text-align: center;
+}
+
+.b-img {
+    filter:brightness(0.6)
 }

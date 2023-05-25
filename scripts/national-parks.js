@@ -91,9 +91,44 @@ function buildNationalParkRow(table, park) {
         mapImg.src = `https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v11/static/pin-s+f44e4c(${park.Longitude},${park.Latitude})/${park.Longitude},${park.Latitude},8.96,0/300x200?access_token=pk.eyJ1IjoiY2hhdW5pIiwiYSI6ImNsaTIxMnBrMzFycWgzZ3A5NHNtNTJvdzIifQ.sqOQKGGQwdAV7uEgqoSlsw`
         mapImg.alt = park.LocationName
 
+        const showMoreCard = document.createElement('card');
+        const content = `
+        <div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+        
+        <p>Coordinates: ${park.Location.coordinates}</p>
+        <p>Website: ${park.Visit}<p>
+        </div>
+        `;
+
+        if (content.includes('undefined')) {
+            console.log('no website')
+        }
+
+        showMoreCard.innerHTML += content
+
+        const showMoreDiv = document.createElement('div');
+        showMoreDiv.classList.add('container')
+       
+        const showMoreRow = document.createElement('div');
+        showMoreRow.classList.add('row');
+        showMoreDiv.appendChild(showMoreRow);
+        
+        const showMoreCol1 = document.createElement('div');
+        showMoreCol1.classList.add('col-md-6', 'imagesContainer');
+        showMoreRow.appendChild(showMoreCol1);
+
+        showMoreCol1.appendChild(mapImg);
+
+        const showMoreCol2 = document.createElement('div');
+        showMoreCol2.classList.add('col-md-6', 'contentContainer');
+        showMoreRow.appendChild(showMoreCol2);
+
+        showMoreCol2.appendChild(showMoreCard);
+
         const mapColspan = row2.insertCell();
         mapColspan.setAttribute('colspan', '5');
-        mapColspan.appendChild(mapImg);
+        mapColspan.append(showMoreDiv);
         
     })
 
@@ -108,8 +143,9 @@ function buildNationalParkRow(table, park) {
     };
 }
 
+function showMore(park) {
 
+}
 // clearBtnEl.addEventListener('click', () => {
 //     informationSectionEl.innerHTML = '';
-    //doesn't allow you to re-select a diff option after clicking
 // })
