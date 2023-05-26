@@ -44,6 +44,11 @@ locationSelectorEl.addEventListener('change', () => {
         buildNationalParkRow(tbody, selPark)
     })
 
+    const tableRows = document.querySelectorAll('tr:nth-child(even)');
+    tableRows.forEach((tablerow) => {
+     tablerow.classList.add('hide')
+    })
+
 })
 
 parkTypeSelectorEl.addEventListener('change', () => {
@@ -84,55 +89,24 @@ function buildNationalParkRow(table, park) {
     showMoreBtn.classList.add('btn', 'btn-outline-dark', 'showBtn');
     showMoreBtn.innerText = "Show More"
     showMoreBtn.addEventListener('click', () => {
-
-        const row2 = table.insertRow(row.rowIndex);
-
-        const mapImg = document.createElement('img');
-        mapImg.src = `https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v11/static/pin-s+f44e4c(${park.Longitude},${park.Latitude})/${park.Longitude},${park.Latitude},8.96,0/300x200?access_token=pk.eyJ1IjoiY2hhdW5pIiwiYSI6ImNsaTIxMnBrMzFycWgzZ3A5NHNtNTJvdzIifQ.sqOQKGGQwdAV7uEgqoSlsw`
-        mapImg.alt = park.LocationName
-
-        const showMoreCard = document.createElement('card');
-        const content = `
-        <div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+        const selectedRow = document.querySelectorAll('table tr:nth-child(even)');
         
-        <p>Coordinates: ${park.Location.coordinates}</p>
-        <p>Website: ${park.Visit}<p>
-        </div>
-        `;
+        selectedRow.forEach((row) => {
+            if (row === row2) {
 
-        if (content.includes('undefined')) {
-            console.log('no website')
-        }
-
-        showMoreCard.innerHTML += content
-
-        const showMoreDiv = document.createElement('div');
-        showMoreDiv.classList.add('container')
-       
-        const showMoreRow = document.createElement('div');
-        showMoreRow.classList.add('row');
-        showMoreDiv.appendChild(showMoreRow);
-        
-        const showMoreCol1 = document.createElement('div');
-        showMoreCol1.classList.add('col-md-6', 'imagesContainer');
-        showMoreRow.appendChild(showMoreCol1);
-
-        showMoreCol1.appendChild(mapImg);
-
-        const showMoreCol2 = document.createElement('div');
-        showMoreCol2.classList.add('col-md-6', 'contentContainer');
-        showMoreRow.appendChild(showMoreCol2);
-
-        showMoreCol2.appendChild(showMoreCard);
-
-        const mapColspan = row2.insertCell();
-        mapColspan.setAttribute('colspan', '5');
-        mapColspan.append(showMoreDiv);
-        
-    })
+            row.classList.toggle('hide');
+            }
+        });
+    });
+    
 
     row.append(showMoreBtn)
+
+    const row2 = table.insertRow();
+
+    showMore(park, row2);
+
+        
 
     if (park.Phone == 0) {
         phoneNumberCell.innerHTML = "No phone number listed"
@@ -143,9 +117,54 @@ function buildNationalParkRow(table, park) {
     };
 }
 
-function showMore(park) {
+function showMore(park, row) {
+    const mapImg = document.createElement('img');
+    mapImg.src = `https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v11/static/pin-s+f44e4c(${park.Longitude},${park.Latitude})/${park.Longitude},${park.Latitude},8.96,0/340x399?access_token=pk.eyJ1IjoiY2hhdW5pIiwiYSI6ImNsaTIxMnBrMzFycWgzZ3A5NHNtNTJvdzIifQ.sqOQKGGQwdAV7uEgqoSlsw`
+    mapImg.alt = park.LocationName
+    mapImg.style.borderRadius = '10px';
 
+    const showMoreInfoDiv = document.createElement('div');
+    showMoreInfoDiv.classList.add('card')
+    const content = `
+    <div class="card-header">
+    <h5>Additional Info</h5>
+    </div>
+
+    <div class="card-body">
+    <p class="lead">${park.LocationName}
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+
+    <p>Coordinates: ${park.Location.coordinates}</p>
+    <p>Website: ${park.Visit || 'No website listed'}<p>
+    </div>
+    `;
+
+    showMoreInfoDiv.innerHTML += content
+    const showMoreDiv = document.createElement('div');
+    showMoreDiv.classList.add('container')
+   
+    const showMoreRow = document.createElement('div');
+    showMoreRow.classList.add('row');
+    showMoreDiv.appendChild(showMoreRow);
+    
+    const showMoreCol1 = document.createElement('div');
+    showMoreCol1.classList.add('col-md-6','col-xl-4', 'imagesContainer');
+    showMoreRow.appendChild(showMoreCol1);
+
+    showMoreCol1.appendChild(mapImg);
+
+    const showMoreCol2 = document.createElement('div');
+    showMoreCol2.classList.add('col-md-6','col-xl-8','contentContainer');
+    showMoreRow.appendChild(showMoreCol2);
+
+    showMoreCol2.appendChild(showMoreInfoDiv);
+
+    const mapColspan = row.insertCell();
+    mapColspan.setAttribute('colspan', '6');
+    mapColspan.append(showMoreDiv);
 }
-// clearBtnEl.addEventListener('click', () => {
-//     informationSectionEl.innerHTML = '';
-// })
+
+clearBtnEl.addEventListener('click', () => {
+    const tbody = informationTable.querySelector('tbody');
+    tbody.innerHTML = '';
+})
