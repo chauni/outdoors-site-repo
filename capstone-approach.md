@@ -1,7 +1,7 @@
 # outdoors-site-repo
 
 'Enjoy the outdoors' National Parks Site
-(best viewed in 'Code view')
+- (best viewed in 'Code view')
 
 # Requirements
 
