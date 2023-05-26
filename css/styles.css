@@ -12,8 +12,9 @@
 
 .b-img {
     filter:brightness(0.6);
-    object-fit: cover;
+    max-width:max-content;
 }
+
 
 .hide {
     display: none
