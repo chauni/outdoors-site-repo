@@ -14,14 +14,14 @@
     - Phone number
     - and a 'Show more' button
 
-![Image of National Parks page](./outdoor-site-nationalparks-1)
+![Image of National Parks page](./outdoor-site-nationalparks-1.png)
 
   - Upon clicking the 'Show more' button, the user is able to see map view of it's location (using Mapbox's Static Images API (https://docs.mapbox.com/playground/static/), as well as additinal information about the park:
     - A brief description (A lorem paragraph) 
     - Coordinates
     - and a website link for the selected park that opens a new tab.
 
-![Image of additional info on National Parks page](./outdoor-site-nationalparks-2)
+![Image of additional info on National Parks page](./outdoor-site-nationalparks-2.png)
 
 # Mountain Info page
 
@@ -33,12 +33,11 @@
     - as well as it's coordinates
   - Alongside that information, a picture is displayed that matches the mountain currently selected
 
-![Image of Mountain Info page](./outdoor-site-mountaininfo)
+![Image of Mountain Info page](./outdoor-site-mountaininfo.png)
 
 ## Sources for methods/solutions
 - Centered text on top of an image: https://www.w3schools.com/howto/howto_css_image_text.asp 
 - Show/hide specific table rows: https://stackoverflow.com/questions/73434657/show-hide-html-table-rows-using-javascript & my Pluralsight instructor (Ben Wihelm)
 - Static map view API (Mapbox): https://docs.mapbox.com/playground/static/
 - Dynamically creating cards in javascript: https://stackoverflow.com/questions/54706080/generating-dynamic-html-cards-from-a-javascript-array
-
 
