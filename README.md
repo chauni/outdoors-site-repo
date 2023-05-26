@@ -33,7 +33,7 @@
     - as well as it's coordinates
   - Alongside that information, a picture is displayed that matches the mountain currently selected
 
-![Image of Mountain Info page](./outdoor-site-mountaininfo.png)
+![Image of Mountain Info page](./outdoor-site-mountain-info.png)
 
 ## Sources for methods/solutions
 - Centered text on top of an image: https://www.w3schools.com/howto/howto_css_image_text.asp 
