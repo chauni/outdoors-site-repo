@@ -37,6 +37,9 @@ mountainSelectorEl.addEventListener('change', () => {
         `;
         mountainInfoDiv.innerHTML += mountainContent;
 
+        // "how to dynamically create cards in javascript": https://stackoverflow.com/questions/54706080/generating-dynamic-html-cards-from-a-javascript-array
+
+
         const imgEl = document.createElement('img');
         imgEl.src = `./images/${mountain.img}`;
         imgEl.alt = mountain.name;

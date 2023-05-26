@@ -33,6 +33,8 @@ locationSelectorEl.addEventListener('change', () => {
         return;
     } if (parkTypeSelectorEl) {
         parkTypeSelectorEl.value = '';
+    } if (selectedLocation == 'Delaware') {
+        alert("No parks found. See Pennsylvania")
     }
 
     const nationalParkLocation = nationalParksArray.filter((nationalPark) => nationalPark.State === selectedLocation)
@@ -70,6 +72,11 @@ parkTypeSelectorEl.addEventListener('change', () => {
         buildNationalParkRow(tbody, selPark)
     })
 
+    const tableRows = document.querySelectorAll('tr:nth-child(even)');
+    tableRows.forEach((tablerow) => {
+     tablerow.classList.add('hide')
+    })
+
 })
 
 function buildNationalParkRow(table, park) {
@@ -98,6 +105,8 @@ function buildNationalParkRow(table, park) {
             }
         });
     });
+
+    // show/hide specific table rows: https://stackoverflow.com/questions/73434657/show-hide-html-table-rows-using-javascript && ben
     
 
     row.append(showMoreBtn)
@@ -123,6 +132,8 @@ function showMore(park, row) {
     mapImg.alt = park.LocationName
     mapImg.style.borderRadius = '10px';
 
+    // static map view api (mapbox): https://docs.mapbox.com/playground/static/
+
     const showMoreInfoDiv = document.createElement('div');
     showMoreInfoDiv.classList.add('card')
     const content = `
@@ -134,10 +145,12 @@ function showMore(park, row) {
     <p class="lead">${park.LocationName}
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
 
-    <p>Coordinates: ${park.Location.coordinates}</p>
-    <p>Website: ${park.Visit || 'No website listed'}<p>
+    <p><b>Coordinates:</b> ${park.Location.coordinates}</p>
+    <p><b>Website:</b> <a href="${park.Visit || 'No website listed'}">${park.Visit || 'No website found'}</a><p>
     </div>
     `;
+
+    // "how to dynamically create cards in javascript": https://stackoverflow.com/questions/54706080/generating-dynamic-html-cards-from-a-javascript-array
 
     showMoreInfoDiv.innerHTML += content
     const showMoreDiv = document.createElement('div');
@@ -167,4 +180,7 @@ function showMore(park, row) {
 clearBtnEl.addEventListener('click', () => {
     const tbody = informationTable.querySelector('tbody');
     tbody.innerHTML = '';
+
+    parkTypeSelectorEl.value = '';
+    locationSelectorEl.value = '';
 })

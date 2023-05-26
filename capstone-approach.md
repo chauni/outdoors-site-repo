@@ -42,19 +42,18 @@
   - Location Selector
 
     - Includes a dropdown (/<select> element) for Location search type
+    - Creating options (using 'new Option' method) and appending it to the Location Selector dropdown element
+    - Options are gathered from the array in location-data.js
 
   - **References**
 
     - 'Select element': Workbook 4 (pages 3-3 - 3-6)
 
-      - Creating options (using 'new Option' method) and appending it to the Location Selector dropdown element.
-        Options are gathered from the array in location-data.js
 
   - **References**
 
     - 'Creating options': Workbook 4 (page 3-4)
-
-            - Matching location based on a park's 'State' property (from national-parks.js array); using the filter() method to find multiple objects that match
+    - Matching location based on a park's 'State' property (from national-parks.js array); using the filter() method to find multiple objects that match
 
   - **References**
 
@@ -64,7 +63,8 @@
 
     - When user selects a specific location, it displays the corresponding info from the array located in national-parks.js
 
-      - onChange event (best to use .addEventListener() method to be able to add multiple events if needed) - .forEach((something) => {
+      - onChange event (best to use .addEventListener() method to be able to add multiple events if needed) 
+      - .forEach((something) => {
         selectedLocation == locationSelectorEl.value
         })
         this will be needed to loop through the national-parks.js array.

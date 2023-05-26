@@ -8,6 +8,8 @@
     text-align: center;
 }
 
+/* centered text on top of an image: https://www.w3schools.com/howto/howto_css_image_text.asp */
+
 .b-img {
     filter:brightness(0.6);
     object-fit: cover;
